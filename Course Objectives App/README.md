@@ -3,7 +3,4 @@
 
 - Course-Objectives-App
 
-
-
-https://user-images.githubusercontent.com/59243729/202177091-9be17f68-c87b-4127-a3b6-166239eaec34.MOV
-
+![ezgif-1-637f30a326](https://user-images.githubusercontent.com/59243729/202177170-f18c5b64-edb2-4de6-bffa-09da2c630976.gif)
