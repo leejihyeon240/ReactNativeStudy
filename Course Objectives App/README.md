@@ -4,3 +4,5 @@
 - Course-Objectives-App
 
 ![ezgif-1-637f30a326](https://user-images.githubusercontent.com/59243729/202177170-f18c5b64-edb2-4de6-bffa-09da2c630976.gif)
+
+<img src="https://user-images.githubusercontent.com/59243729/202177170-f18c5b64-edb2-4de6-bffa-09da2c630976.gif" width="200" height="400"/>
