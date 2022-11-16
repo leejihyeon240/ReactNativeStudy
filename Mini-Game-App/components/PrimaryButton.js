@@ -1,9 +1,6 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
 
-function PrimaryButton({ children }) {
-    function pressHandler() {
-        console.log('Pressed!');
-    }
+function PrimaryButton({ children, onPress }) {
 
     return (
             <View style={styles.buttonOuterContainer}>
@@ -13,7 +10,7 @@ function PrimaryButton({ children }) {
                         ? [styles.buttonInnerContainer, styles.pressed] // 참일 때
                         : styles.buttonInnerContainer
                     } // 거짓이라면 컨테이너 스타일의 기본 버튼을 적용
-                    onPress={pressHandler}
+                    onPress={onPress}
                     android_ripple={{color: '#640233'}}
                 > 
                 <Text style={styles.buttonText}> {children} </Text>

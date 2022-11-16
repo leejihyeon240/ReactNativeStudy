@@ -1,24 +1,41 @@
+import { useState } from 'react';
 import { TextInput, View, StyleSheet } from "react-native";
+
 import PrimaryButton from "../components/PrimaryButton";
 
 function StartGameScreen() {
+    const [ enteredNumber, setEnteredNumber ] = useState('');
+
+    function numberInputHandler(enteredText) {
+        setEnteredNumber(enteredText);
+    } // TextInput 입력할 때 마다 입력되는 텍스트로 상태가 업데이트
+
+    function confirmInputHandler() {
+        const chosenNumber = parseInt(enteredNumber); // 문자열을 숫자로 변환, 숫자가 아닌 문자가 입력되면 변환에 실패함
+    } // 현재 상태를 확인해서 숫자인지 확인하고 범위 내의 숫자만 허용, 입력값이 유효하다면 다음 화면으로 넘어가고 유효하지 않다면 경고를 띄움
+
     return (
         <View style={styles.inputContainer}> 
             <TextInput 
-            style={styles.numberInput} 
-            maxLength={2} 
-            keyboardType="number-pad"
-            autoCapitalize="none"
-            autoCorrect={false} />
+                style={styles.numberInput} 
+                maxLength={2} 
+                keyboardType="number-pad"
+                autoCapitalize="none"
+                autoCorrect={false}
+                onChangeText={numberInputHandler}
+                value={enteredNumber} 
+            />
             <View style={styles.buttonsContainer}>
                 <View style={styles.buttonContainer}>
                     <PrimaryButton>Reset</PrimaryButton>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <PrimaryButton>Confirm</PrimaryButton>
+                    <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
                 </View>
             </View>
-        </View> 
+        </View> // onPress는 <PrimaryButton>의 인수, confirmInputHandler 함수가 가리키는 값이 Pressable(PrimaryButton)의 onPress에 전달
+        // 버튼을 누를 때 마다 confirmInputHandler 함수 실행
+
         // maxLength는 최대 길이 수 제한인데, 숫자니까 "" 이거 말고, {} 이거 써야함
         // keyboardTypes는 숫자 패드만 뜨도록 하는 것
         // autoCorrect 자동 대소문자나 자동 수정 끄기
