@@ -4,7 +4,7 @@
 - Mini-Game-App
 <br>
 🔥분노의 배경 그라데이션!!!!🔥
-<br>
+<br><br>
 - node.js 버전 바꿈 <br>
 - VScode Terminal Settings/Command Prompt로 다시함 <br>
 - expo-cli 어쩌고 그래서 expo도 재설치함 <br>
