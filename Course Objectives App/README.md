@@ -5,5 +5,4 @@
 
 <br>
 
-<완성>
 <img src="https://user-images.githubusercontent.com/59243729/202177170-f18c5b64-edb2-4de6-bffa-09da2c630976.gif" width="300" height="648"/>
