@@ -4,7 +4,7 @@
 - Mini-Game-App
 <br>
 
-# Record
+# Record 2022-11-17
 🔥분노의 배경 선형 그라데이션!!!!🔥
 <br>
 　　ㄴ 3번의 오류를 이겨내고 해결T^T
