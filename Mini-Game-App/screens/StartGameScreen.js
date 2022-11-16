@@ -3,7 +3,7 @@ import { TextInput, View, StyleSheet, Alert } from "react-native";
 
 import PrimaryButton from "../components/PrimaryButton";
 
-function StartGameScreen() {
+function StartGameScreen({onPickNumber}) { // onPickNumber -> App.js
     const [ enteredNumber, setEnteredNumber ] = useState('');
 
     function numberInputHandler(enteredText) {
@@ -22,12 +22,12 @@ function StartGameScreen() {
                 'Invalid number!',
                 'Number has to be a number between 1 and 99.',
                 [{text: 'Okay', style: 'destructive', onPress: resetInputHandler }] // 버튼, onPress: resetInputHandler -> 누를 때마다 빈 문자열로 초기화
-            )
+            );
             return; // 함수의 실행을 취소
         }
 
-        console.log('Valid number!');
-        
+        onPickNumber(chosenNumber); // 선택된 숫자를 전달, 유효성 검사를 통과한 숫자
+
     } // 현재 상태를 확인해서 숫자인지 확인하고 범위 내의 숫자만 허용, 입력값이 유효하다면 다음 화면으로 넘어가고 유효하지 않다면 경고를 띄움
 
     return (

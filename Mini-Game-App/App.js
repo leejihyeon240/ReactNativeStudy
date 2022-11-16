@@ -1,9 +1,23 @@
+import { useState } from 'react';
 import { StyleSheet, ImageBackground } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import StartGameScreen from './screens/StartGameScreen';
+import GameScreen from './screens/GameScreen';
 
 export default function App() {
+  const [userNumber, setUserNumber] = useState(); // userNumberdml 상태를 활용하면 아직 사용자 번호가 없으면 StartGameScreen을 렌더링하고, 있으면 GameScreen을 렌더링
+
+  function pickedNumberHandler(pickedNumber) {
+    setUserNumber(pickedNumber);
+  } // 사용자가 선택한 숫자
+
+  let screen = <StartGameScreen onPickNumber = {pickedNumberHandler} />; // screen = 헬퍼 변수
+
+  if (userNumber) {
+    screen = <GameScreen />; // screen를 GameScreen으로 설정
+  }
+
   return (
     <LinearGradient colors={['#4e0329', '#ddb52f']} style={styles.rootScreen}>
       <ImageBackground 
@@ -12,10 +26,10 @@ export default function App() {
           style={styles.rootScreen}
           imageStyle={styles.backgroundImage}
           >
-        <StartGameScreen />
+        {screen}
       </ImageBackground>
     </LinearGradient>
-  );
+  ); // <screen /> -> JSX 코드를 사용해 screen 변수를 렌더링, GameScreen or StartGameScreen 중 하나가 표시
 }
 
 const styles = StyleSheet.create({
