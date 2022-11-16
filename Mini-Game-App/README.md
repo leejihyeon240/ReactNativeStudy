@@ -4,7 +4,7 @@
 - Mini-Game-App
 <br>
 
-🔥분노의 배경 그라데이션!!!!🔥
+🔥분노의 배경 선형 그라데이션!!!!🔥
 <br>
 - node.js 버전 바꿈 (19 -> 16) <br>
 - VScode Terminal Settings/Command Prompt로 다시 설정함 <br>
