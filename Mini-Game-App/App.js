@@ -5,6 +5,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
 
+import Colors from './constants/colors';
+
 export default function App() {
   const [userNumber, setUserNumber] = useState(); // userNumberdml 상태를 활용하면 아직 사용자 번호가 없으면 StartGameScreen을 렌더링하고, 있으면 GameScreen을 렌더링
 
@@ -19,7 +21,7 @@ export default function App() {
   }
 
   return (
-    <LinearGradient colors={['#4e0329', '#ddb52f']} style={styles.rootScreen}>
+    <LinearGradient colors={[Colors.primary700, Colors.accent500]} style={styles.rootScreen}>
       <ImageBackground 
           source={require('./assets/background.png')} 
           resizeMode="cover"
