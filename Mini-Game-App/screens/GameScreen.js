@@ -1,8 +1,21 @@
+import { useState } from "react";
 import { Text, StyleSheet, View } from "react-native";
 
 import Title from "../components/Title";
 
+function generateRandomBetween(min, max, exclude) {
+    const rndNum = Math.floor(Math.random() * (max - min)) + min;
+
+    if (rndNum === exclude) {
+        return generateRandomBetween(min, max, exclude);
+    } else {
+        return rndNum;
+    }
+}
+
 function GameScreen() {
+    const [currentGuess, setCurrentGuess] = useState(); // 이 상태의 초기값은 최초 추측값이 되어야 함
+
     return (
         <View style={styles.screen}>
             <Title>Higher or lower?</Title>
