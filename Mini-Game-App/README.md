@@ -4,7 +4,7 @@
 - Mini-Game-App
 <br>
 
-# Record <01>
+# Record01
 ### DATE. 2022-11-17
 🔥분노의 배경 선형 그라데이션!!!!🔥
 <br>
@@ -22,13 +22,13 @@
 <br>
 <br>
 
-# Record <02>
+# Record02
 ### DATE. 2022-12-04
 useWindowDimensions => 반응형 UI를 만들 때 최적
 
 ex) 가로 모드 UI
 
-```java
+```javascript
 import { StyleSheet, View, Alert, FlatList, useWindowDimensions } from "react-native";
 
 const { width, height } = useWindowDimensions();
