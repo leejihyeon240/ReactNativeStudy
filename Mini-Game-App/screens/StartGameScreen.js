@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextInput, View, StyleSheet, Alert } from "react-native";
+import { TextInput, View, StyleSheet, Alert, Dimensions, useWindowDimensions } from "react-native";
 
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Title from '../components/ui/Title';
@@ -9,6 +9,8 @@ import InstructionText from '../components/ui/InstructionText';
 
 function StartGameScreen({onPickNumber}) { // onPickNumber -> App.js
     const [ enteredNumber, setEnteredNumber ] = useState('');
+
+    const { width, height } = useWindowDimensions(); // 내부적으로 이 훅은 기기의 치수를 살핌, 변화하는 크기에 따라 동적으로 조정하고 싶다면 이것을 사용
 
     function numberInputHandler(enteredText) {
         setEnteredNumber(enteredText);
@@ -34,8 +36,10 @@ function StartGameScreen({onPickNumber}) { // onPickNumber -> App.js
 
     } // 현재 상태를 확인해서 숫자인지 확인하고 범위 내의 숫자만 허용, 입력값이 유효하다면 다음 화면으로 넘어가고 유효하지 않다면 경고를 띄움
 
+    const marginTopDistance = height < 380 ? 30 : 100;
+
     return (
-        <View style={styles.rootContainer}>
+        <View style={[styles.rootContainer, {marginTop: marginTopDistance}]}>
             <Title>Guess My Number</Title>
             <Card>
                 <InstructionText>Enter a Number</InstructionText>
@@ -69,10 +73,12 @@ function StartGameScreen({onPickNumber}) { // onPickNumber -> App.js
 
 export default StartGameScreen;
 
+const deviceHeight = Dimensions.get('window').height; // Dimensions은 최대 사용 가능한 공간을 파악할 수 있음
+
 const styles = StyleSheet.create({
     rootContainer: {
         flex: 1,
-        marginTop: 100,
+        // marginTop: deviceHeight < 380 ? 30 : 100,
         alignItems: 'center' // 늘어나지말고 상하좌우 넉넉한 여백을 두고 센터에 있으렴
     },
     numberInput: {
