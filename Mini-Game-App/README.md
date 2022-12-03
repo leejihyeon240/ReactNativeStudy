@@ -2,6 +2,11 @@
 ### 【한글자막 React Native – 완벽 가이드 [2022]
 
 - Mini-Game-App
+
+<br>
+
+<img src="https://user-images.githubusercontent.com/59243729/205455650-9f330571-2a7f-4fc3-a16c-e7989e410779.gif" width="300" height="648"/>
+
 <br>
 
 # Record 01
