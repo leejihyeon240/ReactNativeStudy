@@ -24,7 +24,7 @@
 
 # Record 02
 ### DATE. 2022-12-04
-useWindowDimensions => 반응형 UI를 만들 때 최적
+useWindowDimensions 👉 반응형 UI를 만들 때 최적
 
 ex) 가로 모드 UI
 
@@ -118,6 +118,6 @@ const styles = StyleSheet.create({
     }
 });
 ```
-또는 확장자 수정 방법 => Title.android.js / Title.ios.js (간단함) <br>
+또는 확장자 수정 방법 👉 Title.android.js / Title.ios.js (간단함) <br>
 But import에서 자동으로 변동이 생기기 때문에 <br>
-ex) import Title from "../components/ui/Title.ios"; => import Title from "../components/ui/Title"; 로 수정해주어야 함
+ex) import Title from "../components/ui/Title.ios"; ➡️ import Title from "../components/ui/Title"; 로 수정해주어야 함
