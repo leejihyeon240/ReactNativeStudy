@@ -4,7 +4,7 @@
 - Mini-Game-App
 <br>
 
-# Record
+# Record1
 ### DATE. 2022-11-17
 🔥분노의 배경 선형 그라데이션!!!!🔥
 <br>
@@ -20,6 +20,7 @@
 <br>
 <br>
 
+# Record2
 ### DATE. 2022-12-04
 useWindowDimensions => 반응형 UI를 만들 때 최적
 
