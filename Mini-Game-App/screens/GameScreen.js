@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Text, StyleSheet, View, Alert } from "react-native";
 
 import NumberContainer from "../components/game/NumberContainer";
@@ -18,9 +18,16 @@ function generateRandomBetween(min, max, exclude) {
 let minBoundary = 1;
 let maxBoundary = 100;
 
-function GameScreen({userNumber}) {
-    const initialGuess = generateRandomBetween(minBoundary, maxBoundary, userNumber) // 사용자가 고른 숫자를 배제(userNumber를 추측 못 하도록), 프로퍼티를 통해 다른 컴포너트의 값을 도출해옴
+function GameScreen({userNumber, onGameOver}) {
+    // initialGuess은 한번만 필요하므로 하드코딩을 한다 *1, 100으로 설정한 것
+    const initialGuess = generateRandomBetween(1, 100, userNumber) // 사용자가 고른 숫자를 배제(userNumber를 추측 못 하도록), 프로퍼티를 통해 다른 컴포너트의 값을 도출해옴
     const [currentGuess, setCurrentGuess] = useState(initialGuess); // 이 상태의 초기값은 최초 추측값이 되어야 함, initialGuess값을 초기값으로 설정
+
+    useEffect(() => {
+        if (currentGuess === userNumber){
+            onGameOver(); // 게임이 정말 끝났다면 onGameOver를 호출
+        }
+    }, [currentGuess, userNumber, onGameOver]); // *의존성 => userNumber, onGameOver 함수가 변경될 때마다 effect 함수가 재실행되고 게임 종료 여부를 확인 함
 
     // 새로운 난수를 가져올 함수
     function nextGuessHandler(direction) { // direction => 'lower', 'greater'
