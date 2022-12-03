@@ -18,6 +18,7 @@
 <img width="600" alt="image" align="left" src="https://user-images.githubusercontent.com/59243729/202198177-ef648e8c-d9db-433b-90ee-89e023152d11.png">
 
 <br>
+<br>
 
 ### DATE. 2022-12-04
 useWindowDimensions => 반응형 UI를 만들 때 최적
