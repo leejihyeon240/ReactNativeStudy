@@ -90,3 +90,36 @@ let content = ( // 세로 모드
         </View>
     );
 ```
+
+<br>
+<br>
+<br>
+
+# Record 03
+### DATE. 2022-12-04
+Platform API를 통해 특정 플랫폼용 코드 작성하기
+
+ex) 가로 모드 UI
+
+```javascript
+import { Text, StyleSheet, Platform } from 'react-native';
+
+const styles = StyleSheet.create({
+    title: {
+        fontFamily: 'open-sans-bold',
+        fontSize: 24,
+        // fontWeight: 'bold',
+        color: 'white',
+        textAlign: 'center',
+        // borderWidth: Platform.OS === 'android' ? 2 : 0, // 아이폰에서만 borderWidth(테두리) 없음, 삼항식 형태
+        borderWidth: Platform.select({ ios: 0, android: 2}), // select 형태
+        borderColor: 'white',
+        padding: 12,
+        maxWidth: '80%', //  동적 너비 설정하기
+        width: 300
+    }
+});
+```
+or 확장자 수정 => Title.android.js / Title.ios.js (간단함)
+* But import에서 자동으로 변동이 생기기 때문에
+ex) import Title from "../components/ui/Title.ios"; => import Title from "../components/ui/Title"; 
