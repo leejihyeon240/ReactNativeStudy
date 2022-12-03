@@ -7,6 +7,7 @@ import Card from "../components/ui/Card";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Title from "../components/ui/Title";
 import InstructionText from "../components/ui/InstructionText";
+import GuessLogItem from "../components/game/GuessLogItem";
 
 function generateRandomBetween(min, max, exclude) {
     const rndNum = Math.floor(Math.random() * (max - min)) + min;
@@ -63,6 +64,8 @@ function GameScreen({userNumber, onGameOver}) {
         setGuessRounds(prevGuessRounds => [newRndNumber, ...prevGuessRounds]); // 휴대폰이 말한 이전 숫자들(newRndNumber)을 기록하는 것
     }
 
+    const guessRoundsListLength = guessRounds.length;
+
     return (
         <View style={styles.screen}>
             <Title>Higher or lower?</Title>
@@ -86,7 +89,8 @@ function GameScreen({userNumber, onGameOver}) {
                 {/*guessRounds.map(guessRound => <Text key={guessRound}>{guessRound}</Text>)*/}
                 <FlatList
                     data={guessRounds}
-                    renderItem={(itemData) => <Text>{itemData.item}</Text>}
+                    renderItem={(itemData) => <GuessLogItem roundNumber={guessRoundsListLength - itemData.index} // 몇 라운드인지
+                    guess={itemData.item} />} // 해당 라운드에서 추측한 숫자를 알아냄
                     keyExtractor={(item) => item}
                 />
             </View>
