@@ -1,9 +1,9 @@
 import { Text, StyleSheet } from 'react-native';
 import Colors from '../../constants/colors';
 
-function InstructionText ({ children }) {
-    return <Text style={styles.instructionText}>{children}</Text>;
-}
+function InstructionText ({ children, style }) {
+    return <Text style={[styles.instructionText, style]}>{children}</Text>;
+} // style 덮어쓰기, 기본값 스타일을 덮어쓸 수 있음
 
 export default InstructionText;
 
