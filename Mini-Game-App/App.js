@@ -3,6 +3,7 @@ import { StyleSheet, ImageBackground, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
+import { StatusBar } from 'expo-status-bar';
 
 import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
@@ -53,8 +54,10 @@ export default function App() {
     setguessRounds(0);
   }
 
-  return (
-    <LinearGradient colors={[Colors.primary700, Colors.accent500]} style={styles.rootScreen}>
+  return ( // 형제 루트 컴포넌트가 두 개 있으므로, fragment 컴포넌트로 이 부분을 감싸준다 <> </>
+  <>
+  <StatusBar style='light' />
+  <LinearGradient colors={[Colors.primary700, Colors.accent500]} style={styles.rootScreen}>
       <ImageBackground 
           source={require('./assets/background.png')} 
           resizeMode="cover"
@@ -66,7 +69,9 @@ export default function App() {
             </SafeAreaView>
       </ImageBackground>
     </LinearGradient>
-  ); // <screen /> -> JSX 코드를 사용해 screen 변수를 렌더링, GameScreen or StartGameScreen 중 하나가 표시
+    </>
+  );
+     // <screen /> -> JSX 코드를 사용해 screen 변수를 렌더링, GameScreen or StartGameScreen 중 하나가 표시
 } // SafeAreaView는 장치의 안전 영역 경계 안에서 컨텐츠를 렌더링 하는 것
 
 const styles = StyleSheet.create({

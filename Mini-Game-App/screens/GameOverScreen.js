@@ -1,13 +1,32 @@
-import { Text, Image, StyleSheet, View, Dimensions } from "react-native";
+import { Text, Image, StyleSheet, View, useWindowDimensions, ScrollView } from "react-native";
 import Colors from "../constants/colors";
 import Title from "../components/ui/Title";
 import PrimaryButton from "../components/ui/PrimaryButton";
 
 function GameOverScreen({roundsNumber, userNumber, onStartNewGame}) {
+    const { width, height } = useWindowDimensions();
+
+    let imageSize = 300;
+
+    if (width < 380 ) {
+        imageSize = 150;
+    }
+
+    if (height < 400 ) {
+        imageSize = 80;
+    }
+
+    const imageStyle = {
+        width: imageSize,
+        height: imageSize,
+        borderRadius: imageSize / 2
+    };
+
     return (
-        <View style={styles.rootContainer}>
+        <ScrollView style={styles.screen}>
+            <View style={styles.rootContainer}>
             <Title>GAME OVER!</Title>
-            <View style={styles.imageContainer}>
+            <View style={[styles.imageContainer, imageStyle]}>
                 <Image 
                     style={styles.image}
                     source={require('../assets/success.png')} />
@@ -18,12 +37,13 @@ function GameOverScreen({roundsNumber, userNumber, onStartNewGame}) {
             </Text>
             <PrimaryButton onPress={onStartNewGame}>Start New Game</PrimaryButton>
         </View>
+        </ScrollView>
     )
 }
 
 export default GameOverScreen;
 
-const deviceWidth = Dimensions.get('window').width; // Dimensions은 최대 사용 가능한 공간을 파악할 수 있음
+// const deviceWidth = Dimensions.get('window').width; // Dimensions은 최대 사용 가능한 공간을 파악할 수 있음
 
 const styles = StyleSheet.create({
     rootContainer: {
@@ -32,10 +52,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    screen: {
+        flex: 1,
+    },
     imageContainer: {
-        width: deviceWidth < 380 ? 150 : 300,
-        height: deviceWidth < 380 ? 150 : 300,
-        borderRadius: deviceWidth < 380 ? 75 : 150,
+        // width: deviceWidth < 380 ? 150 : 300,
+        // height: deviceWidth < 380 ? 150 : 300,
+        // borderRadius: deviceWidth < 380 ? 75 : 150,
         borderWidth: 3,
         borderColor: Colors.primary800,
         overflow: 'hidden', // 이미지의 사각형 모서리를 숨김, 컨테이너를 이미지의 마스크 = 오버레이로 사용하는 것
