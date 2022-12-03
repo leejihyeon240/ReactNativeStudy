@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     },
     numberText: {
         color: Colors.accent500,
-        fontSize: deviceWidth < 380 ? 12 : 24,
+        fontSize: deviceWidth < 380 ? 28 : 36,
         fontFamily: 'open-sans-bold'
     }
 });

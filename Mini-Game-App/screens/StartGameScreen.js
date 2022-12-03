@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextInput, View, StyleSheet, Alert, Dimensions, useWindowDimensions } from "react-native";
+import { TextInput, View, StyleSheet, Alert, Dimensions, useWindowDimensions, KeyboardAvoidingView, ScrollView } from "react-native";
 
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Title from '../components/ui/Title';
@@ -39,7 +39,9 @@ function StartGameScreen({onPickNumber}) { // onPickNumber -> App.js
     const marginTopDistance = height < 380 ? 30 : 100;
 
     return (
-        <View style={[styles.rootContainer, {marginTop: marginTopDistance}]}>
+        <ScrollView>
+            <KeyboardAvoidingView style={styles.screen} behavior="position">
+            <View style={[styles.rootContainer, {marginTop: marginTopDistance}]}>
             <Title>Guess My Number</Title>
             <Card>
                 <InstructionText>Enter a Number</InstructionText>
@@ -62,6 +64,8 @@ function StartGameScreen({onPickNumber}) { // onPickNumber -> App.js
                 </View>
                 </Card>
         </View>
+        </KeyboardAvoidingView>
+        </ScrollView>
     );
     // onPress는 <PrimaryButton>의 인수, confirmInputHandler 함수가 가리키는 값이 Pressable(PrimaryButton)의 onPress에 전달
     // 버튼을 누를 때 마다 confirmInputHandler 함수 실행
@@ -69,6 +73,8 @@ function StartGameScreen({onPickNumber}) { // onPickNumber -> App.js
     // maxLength는 최대 길이 수 제한인데, 숫자니까 "" 이거 말고, {} 이거 써야함
     // keyboardTypes는 숫자 패드만 뜨도록 하는 것
     // autoCorrect 자동 대소문자나 자동 수정 끄기
+
+    // KeyboardAvoidingView = 가로모드 키보드 개선
 }
 
 export default StartGameScreen;
@@ -76,6 +82,9 @@ export default StartGameScreen;
 const deviceHeight = Dimensions.get('window').height; // Dimensions은 최대 사용 가능한 공간을 파악할 수 있음
 
 const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+    },
     rootContainer: {
         flex: 1,
         // marginTop: deviceHeight < 380 ? 30 : 100,

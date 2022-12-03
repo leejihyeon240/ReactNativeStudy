@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { StyleSheet, View, Alert, Text, FlatList } from "react-native";
+import { StyleSheet, View, Alert, FlatList, useWindowDimensions } from "react-native";
 import { Ionicons } from '@expo/vector-icons'
 
 import NumberContainer from "../components/game/NumberContainer";
@@ -27,6 +27,7 @@ function GameScreen({userNumber, onGameOver}) {
     const initialGuess = generateRandomBetween(1, 100, userNumber) // 사용자가 고른 숫자를 배제(userNumber를 추측 못 하도록), 프로퍼티를 통해 다른 컴포너트의 값을 도출해옴
     const [currentGuess, setCurrentGuess] = useState(initialGuess); // 이 상태의 초기값은 최초 추측값이 되어야 함, initialGuess값을 초기값으로 설정
     const [guessRounds, setGuessRounds] = useState([initialGuess]);
+    const { width, height } = useWindowDimensions();
 
     useEffect(() => {
         if (currentGuess === userNumber){
@@ -66,25 +67,51 @@ function GameScreen({userNumber, onGameOver}) {
 
     const guessRoundsListLength = guessRounds.length;
 
+    let content = ( // 세로 모드
+        <>
+            <NumberContainer>{currentGuess}</NumberContainer>
+                <Card>
+                    <InstructionText style={styles.instructionText}> Higher or lower?</InstructionText>
+                    <View style={styles.buttonsContainer}>
+                        <View style={styles.buttonContainer}>
+                            <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
+                                <Ionicons name="md-remove" size={24} color="white" />
+                            </PrimaryButton>
+                        </View>
+                        <View style={styles.buttonContainer}>
+                            <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>
+                                <Ionicons name="md-add" size={24} color="white" />
+                            </PrimaryButton>
+                        </View>
+                    </View>
+                </Card>
+        </>
+    );
+
+    if (width > 500 ) { // 가로 모드 UI 만드는 법
+        content = (
+            <>
+                <View style={styles.buttonContainerWide}>
+                        <View style={styles.buttonsContainer}>
+                            <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
+                                <Ionicons name="md-remove" size={24} color="white" />
+                            </PrimaryButton>
+                        </View>
+                    <NumberContainer>{currentGuess}</NumberContainer>
+                    <View style={styles.buttonsContainer}>
+                            <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>
+                                <Ionicons name="md-add" size={24} color="white" />
+                            </PrimaryButton>
+                        </View>
+                </View>
+            </>
+        );
+    }
+
     return (
         <View style={styles.screen}>
-            <Title>Higher or lower?</Title>
-            <NumberContainer>{currentGuess}</NumberContainer>
-            <Card>
-                <InstructionText style={styles.instructionText}> Higher or lower?</InstructionText>
-                <View style={styles.buttonsContainer}>
-                    <View style={styles.buttonsContainer}>
-                        <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
-                            <Ionicons name="md-remove" size={24} color="white" />
-                        </PrimaryButton>
-                    </View>
-                    <View style={styles.buttonsContainer}>
-                        <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>
-                            <Ionicons name="md-add" size={24} color="white" />
-                        </PrimaryButton>
-                    </View>
-                </View>
-            </Card>
+            <Title>Opponent's Guess</Title>
+            {content}
             <View style={styles.listContainer}>
                 {/*guessRounds.map(guessRound => <Text key={guessRound}>{guessRound}</Text>)*/}
                 <FlatList
@@ -114,6 +141,10 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         flex: 1
+    },
+    buttonContainerWide: {
+        flexDirection: 'row',
+        alignItems: 'center'
     },
     listContainer: {
         flex: 1,
