@@ -99,8 +99,6 @@ let content = ( // 세로 모드
 ### DATE. 2022-12-04
 Platform API를 통해 특정 플랫폼용 코드 작성하기
 
-ex) 가로 모드 UI
-
 ```javascript
 import { Text, StyleSheet, Platform } from 'react-native';
 
@@ -120,6 +118,6 @@ const styles = StyleSheet.create({
     }
 });
 ```
-or 확장자 수정 => Title.android.js / Title.ios.js (간단함)
+또는 확장자 수정 방법 => Title.android.js / Title.ios.js (간단함)
 * But import에서 자동으로 변동이 생기기 때문에
 ex) import Title from "../components/ui/Title.ios"; => import Title from "../components/ui/Title"; 
