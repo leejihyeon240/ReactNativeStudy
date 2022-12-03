@@ -119,5 +119,5 @@ const styles = StyleSheet.create({
 });
 ```
 또는 확장자 수정 방법 => Title.android.js / Title.ios.js (간단함)
-* But import에서 자동으로 변동이 생기기 때문에
-ex) import Title from "../components/ui/Title.ios"; => import Title from "../components/ui/Title"; 
+* But import에서 자동으로 변동이 생기기 때문에   
+* ex) import Title from "../components/ui/Title.ios"; => import Title from "../components/ui/Title"; 
