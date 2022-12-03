@@ -28,7 +28,7 @@ useWindowDimensions => 반응형 UI를 만들 때 최적
 
 ex) 가로 모드 UI
 
-'''java
+```java
 import { StyleSheet, View, Alert, FlatList, useWindowDimensions } from "react-native";
 
 const { width, height } = useWindowDimensions();
@@ -89,4 +89,4 @@ let content = ( // 세로 모드
             </View>
         </View>
     );
-'''
+```
