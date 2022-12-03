@@ -12,6 +12,7 @@ import Colors from './constants/colors';
 export default function App() {
   const [userNumber, setUserNumber] = useState(); // userNumberdml 상태를 활용하면 아직 사용자 번호가 없으면 StartGameScreen을 렌더링하고, 있으면 GameScreen을 렌더링
   const [gameIsOver, setGameIsOver] = useState(true);
+  const [guessRounds, setguessRounds] = useState(0);
 
   const [fontsLoaded] = useFonts({
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
@@ -35,11 +36,20 @@ export default function App() {
   }
 
   if (gameIsOver && userNumber) { // 게임 종료 여부와 함께 userNumber가 참인지 확인
-    screen = <GameOverScreen />
+    screen = 
+    <GameOverScreen
+      userNumber={userNumber}
+      roundsNumber={guessRounds}
+      onStartNewGame={startNewGameHandler} />
   }
 
   function gameOverHandler() {
     setGameIsOver(true);
+  }
+
+  function startNewGameHandler() {
+    setUserNumber(null);
+    setguessRounds(0);
   }
 
   return (

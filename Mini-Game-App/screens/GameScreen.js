@@ -32,6 +32,11 @@ function GameScreen({userNumber, onGameOver}) {
         }
     }, [currentGuess, userNumber, onGameOver]); // *의존성 => userNumber, onGameOver 함수가 변경될 때마다 effect 함수가 재실행되고 게임 종료 여부를 확인 함
 
+    useEffect(() => {
+        minBoundary = 1;
+        maxBoundary = 100;
+    }, []);
+    
     // 새로운 난수를 가져올 함수
     function nextGuessHandler(direction) { // direction => 'lower', 'greater'
         if (
