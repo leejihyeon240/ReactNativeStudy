@@ -30,7 +30,7 @@ function GameScreen({userNumber, onGameOver}) {
 
     useEffect(() => {
         if (currentGuess === userNumber){
-            onGameOver(); // 게임이 정말 끝났다면 onGameOver를 호출
+            onGameOver(guessRounds.length); // 게임이 정말 끝났다면 onGameOver를 호출
         }
     }, [currentGuess, userNumber, onGameOver]); // *의존성 => userNumber, onGameOver 함수가 변경될 때마다 effect 함수가 재실행되고 게임 종료 여부를 확인 함
 
@@ -85,7 +85,7 @@ function GameScreen({userNumber, onGameOver}) {
                     </View>
                 </View>
             </Card>
-            <View>
+            <View style={styles.listContainer}>
                 {/*guessRounds.map(guessRound => <Text key={guessRound}>{guessRound}</Text>)*/}
                 <FlatList
                     data={guessRounds}
@@ -113,5 +113,9 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         flex: 1
+    },
+    listContainer: {
+        flex: 1,
+        padding: 16
     }
 });
