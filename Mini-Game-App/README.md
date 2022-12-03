@@ -17,4 +17,13 @@
 <img width="300" alt="image" align="right" src="https://user-images.githubusercontent.com/59243729/202198956-4fda4f3c-7190-442f-ac35-d48a01dca0d0.png">
 <img width="600" alt="image" align="left" src="https://user-images.githubusercontent.com/59243729/202198177-ef648e8c-d9db-433b-90ee-89e023152d11.png">
 
+<br>
 
+### DATE. 2022-12-04
+useWindowDimensions => 반응형 UI를 만들 때 최적
+
+ex) 가로 모드 UI
+
+'''javascript
+import { StyleSheet, View, Alert, FlatList, useWindowDimensions } from "react-native";
+'''
