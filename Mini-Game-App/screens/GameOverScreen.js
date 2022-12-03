@@ -1,4 +1,4 @@
-import { Text, Image, StyleSheet, View } from "react-native";
+import { Text, Image, StyleSheet, View, Dimensions } from "react-native";
 import Colors from "../constants/colors";
 import Title from "../components/ui/Title";
 import PrimaryButton from "../components/ui/PrimaryButton";
@@ -23,6 +23,8 @@ function GameOverScreen({roundsNumber, userNumber, onStartNewGame}) {
 
 export default GameOverScreen;
 
+const deviceWidth = Dimensions.get('window').width; // Dimensions은 최대 사용 가능한 공간을 파악할 수 있음
+
 const styles = StyleSheet.create({
     rootContainer: {
         flex: 1,
@@ -31,9 +33,9 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     imageContainer: {
-        width: 300,
-        height: 300,
-        borderRadius: 150,
+        width: deviceWidth < 380 ? 150 : 300,
+        height: deviceWidth < 380 ? 150 : 300,
+        borderRadius: deviceWidth < 380 ? 75 : 150,
         borderWidth: 3,
         borderColor: Colors.primary800,
         overflow: 'hidden', // 이미지의 사각형 모서리를 숨김, 컨테이너를 이미지의 마스크 = 오버레이로 사용하는 것
