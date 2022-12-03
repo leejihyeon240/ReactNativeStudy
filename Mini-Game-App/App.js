@@ -17,7 +17,8 @@ export default function App() {
   let screen = <StartGameScreen onPickNumber = {pickedNumberHandler} />; // screen = 헬퍼 변수
 
   if (userNumber) {
-    screen = <GameScreen />; // screen를 GameScreen으로 설정
+    screen = <GameScreen userNumber={userNumber}/>; // screen를 GameScreen으로 설정, 게임이 시작되자마자 userNumber가 GameScreen에 전달해야한다
+    // 선택된 숫자가 게임 화면에 노출되도록
   }
 
   return (
@@ -34,7 +35,7 @@ export default function App() {
       </ImageBackground>
     </LinearGradient>
   ); // <screen /> -> JSX 코드를 사용해 screen 변수를 렌더링, GameScreen or StartGameScreen 중 하나가 표시
-}
+} // SafeAreaView는 장치의 안전 영역 경계 안에서 컨텐츠를 렌더링 하는 것
 
 const styles = StyleSheet.create({
     rootScreen: {
