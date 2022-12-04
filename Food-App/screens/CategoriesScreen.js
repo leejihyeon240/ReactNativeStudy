@@ -6,7 +6,10 @@ import { CATEGORIES } from "../data/dummy-data";
 function CategorysScreen({ navigation }) {
     function renderCategoryItem(itemData) {
         function pressHandler() {
-            navigation.navigate('MealsOverview'); // React Navigation이 제공하는 메소드, 이동하려는 화면
+            navigation.navigate('MealsOverview', {
+                categoryId: itemData.item.id, // categoryId를 매개변수 객체로 설정 => 이 친구를 전달함
+            }); // React Navigation이 제공하는 메소드, 이동하려는 화면
+            // 두번째 매개변수의 값으로 전달하는 객체를 통해 paramas를 정의할 수 있음, 로딩될 화면에 전달해야하는 매개변수
         }
 
         return (
