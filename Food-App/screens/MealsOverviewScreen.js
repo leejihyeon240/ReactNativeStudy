@@ -1,12 +1,26 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, FlatList, Text, StyleSheet } from "react-native";
+import MealItem from "../components/MealItem";
 
 import { MEALS } from "../data/dummy-data";
 
-function MealsOverviewScreen( { route }) { // route 프로퍼티
+function MealsOverviewScreen({ route }) { // route 프로퍼티
     const catId = route.params.categoryId // params = 화면에 전달했을 법한 매개변수를 포함한 객체 / categoryId 아이디 전달 받기
+
+    const displayedMeals = MEALS.filter((mealItem) => {
+        return mealItem.categoryIds.indexOf(catId) >= 0; // 0보다 크거나 같으면 일치하는 값이 있다는 뜻이니 true를 반환
+    }); // 해당 카테고리에 해당하는 식단을 모두 반환, filter는 반드시 함수를 가짐
+
+    function renderMealItem(itemData) {
+        return <MealItem title={itemData.item.title} />
+    }
+
     return (
         <View style={styles.container}>
-            <Text>Meals Overview Screen - {catId}</Text>
+            <FlatList
+                data={displayedMeals}
+                keyExtractor={(item) => item.id}
+                renderItem={renderMealItem}
+            />
         </View>
     );
 }
