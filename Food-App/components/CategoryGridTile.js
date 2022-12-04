@@ -1,6 +1,6 @@
 import { Pressable, View, Text, StyleSheet, Platform } from "react-native";
 
-function CategoryGridTile({ title, color }) {
+function CategoryGridTile({ title, color, onPress }) {
     return (
         <View style={styles.gridItem}>
             <Pressable
@@ -9,6 +9,7 @@ function CategoryGridTile({ title, color }) {
                     styles.button,
                     pressed ? styles.buttonPressed : null] // 참일 경우 buttonPressed(눌렀을 때 효과)를 추가하고, 그렇지 않으면 null을 추가
                 }
+                onPress={onPress}
             >
                 <View style={[styles.innerContainer, { backgroundColor: color }]// 아이템 색상 입히기,
                     // 배열로 변경하여 gridItem 기반의 스타일이 항상 추가되도록 하고, 배경색을 color로 설정한 다른 스타일 객체를 병합

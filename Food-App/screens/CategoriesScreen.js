@@ -3,11 +3,20 @@ import CategoryGridTile from "../components/CategoryGridTile";
 
 import { CATEGORIES } from "../data/dummy-data";
 
-function renderCategoryItem(itemData) {
-    return <CategoryGridTile title={itemData.item.title} color={itemData.item.color} />; // FlatList에서 렌더링하는 모든 항목에 출력
-}
+function CategorysScreen({ navigation }) {
+    function renderCategoryItem(itemData) {
+        function pressHandler() {
+            navigation.navigate('MealsOverview'); // React Navigation이 제공하는 메소드, 이동하려는 화면
+        }
 
-function CategorysScreen() {
+        return (
+            <CategoryGridTile
+                title={itemData.item.title}
+                color={itemData.item.color}
+                onPress={pressHandler} />
+        );// FlatList에서 렌더링하는 모든 항목에 출력
+    }
+
     return (
         <FlatList
             data={CATEGORIES}
