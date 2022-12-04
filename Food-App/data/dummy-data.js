@@ -1,6 +1,8 @@
 import Category from '../models/category';
 import Meal from '../models/meal';
 
+// 변경되지 않을 정적 데이터로 되어있기 때문에 FlatList 쓸 필요 없음
+
 export const CATEGORIES = [
   new Category('c1', 'Italian', '#f5428d'),
   new Category('c2', 'Quick & Easy', '#f54242'),
