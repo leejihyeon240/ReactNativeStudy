@@ -203,6 +203,6 @@ const styles = StyleSheet.create({
 ```
 <br>
 + 추가
-<img width="300" alt="image" align="right" src="https://user-images.githubusercontent.com/59243729/205500300-065a3e75-46d1-4742-8e61-40e02450e8ca.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/59243729/205500300-065a3e75-46d1-4742-8e61-40e02450e8ca.png">
 
 
