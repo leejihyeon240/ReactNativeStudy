@@ -8,7 +8,13 @@ function renderCategoryItem(itemData) {
 }
 
 function CategorysScreen() {
-    return <FlatList data={CATEGORIES} keyExtractor={(item) => item.id} renderItem={renderCategoryItem} /> // keyExtractor는 자동으로 item을 매개변수로 받음
+    return (
+        <FlatList
+            data={CATEGORIES}
+            keyExtractor={(item) => item.id}
+            renderItem={renderCategoryItem}
+            numColumns={2} /> // keyExtractor는 자동으로 item을 매개변수로 받음
+    );
 }
 
 export default CategorysScreen;
