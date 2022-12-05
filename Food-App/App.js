@@ -13,8 +13,15 @@ export default function App() {
     <>
       <StatusBar style='dark' />
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="MealsCategories" component={CategorysScreen} />
+        <Stack.Navigator
+        screenOptions={{
+          headerStyle: { backgroundColor: '#F2A6B6'},
+          headerTintColor: 'white',
+          contentStyle: { backgroundColor: '#F2BEB6'}, // 모든 네비게이션바의 제목과 배경색
+
+        }}>
+          <Stack.Screen name="MealsCategories" component={CategorysScreen} options={{title: 'All Categories'} // ***name 말고 다른 걸로 타이틀 하고 싶을 때
+        }/> 
           <Stack.Screen name='MealsOverview' component={MealsOverviewScreen} />
         </Stack.Navigator>
       </NavigationContainer>
