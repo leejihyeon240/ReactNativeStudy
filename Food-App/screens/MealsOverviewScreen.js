@@ -1,4 +1,4 @@
-import { View, FlatList, Text, StyleSheet } from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 import MealItem from "../components/MealItem";
 
 import { MEALS } from "../data/dummy-data";
@@ -11,7 +11,16 @@ function MealsOverviewScreen({ route }) { // route 프로퍼티
     }); // 해당 카테고리에 해당하는 식단을 모두 반환, filter는 반드시 함수를 가짐
 
     function renderMealItem(itemData) {
-        return <MealItem title={itemData.item.title} />
+        const item = itemData.item;
+
+        const mealItemProps = {
+            title: item.title,
+            imageUrl: item.imageUrl, // 마찬가지로 meal.js에 this.imageUrl = imageUrl;가 있기 때문에 사용 가능한 것.
+            affordability: item.affordability,
+            complexity: item.complexity,
+            duration: item.duration
+        }
+        return <MealItem {...mealItemProps} /> // 객체 내의 모든 프로퍼티를 컴포넌트의 프로퍼티로 배분
     }
 
     return (
