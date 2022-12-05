@@ -1,10 +1,22 @@
 import { View, Text, Pressable, Image, StyleSheet, Platform } from "react-native";
 
-function MealItem({ title, imageUrl, duration, complexity, affordability }) {
+import { useNavigation } from '@react-navigation/native';
+
+function MealItem({ id, title, imageUrl, duration, complexity, affordability }) {
+    const navigation = useNavigation();
+
+    function selectMealItemHandler() {
+        navigation.navigate('MealDetail', {
+            mealId: id
+        });
+    }
+    
     return (
+
         <View style={styles.mealItem}>
             <Pressable android_ripple={{ color: '#ccc' }}
-                style={({ pressed }) => (pressed ? styles.buttonPressed : null)} // 참일 경우 buttonPressed(눌렀을 때 효과)를 추가하고, 그렇지 않으면 null을 추가
+                style={({ pressed }) => (pressed ? styles.buttonPressed : null)}  // 참일 경우 buttonPressed(눌렀을 때 효과)를 추가하고, 그렇지 않으면 null을 추가
+                onPress={selectMealItemHandler}
             >
                 <View style={styles.innerContainer}>
                     <View>

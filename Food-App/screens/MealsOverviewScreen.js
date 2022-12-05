@@ -25,6 +25,7 @@ function MealsOverviewScreen({ route, navigation }) { // route 프로퍼티
         const item = itemData.item;
 
         const mealItemProps = {
+            id: item.id,
             title: item.title,
             imageUrl: item.imageUrl, // 마찬가지로 meal.js에 this.imageUrl = imageUrl;가 있기 때문에 사용 가능한 것.
             affordability: item.affordability,

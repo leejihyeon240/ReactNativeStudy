@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import CategorysScreen from './screens/CategoriesScreen';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
+import MealDatailScreen from './screens/MealDetailScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ export default function App() {
           <Stack.Screen name="MealsCategories" component={CategorysScreen} options={{ title: 'All Categories' } // ***name 말고 다른 걸로 타이틀 하고 싶을 때
           } />
           <Stack.Screen name='MealsOverview' component={MealsOverviewScreen} />
+          <Stack.Screen name='MealDetail' component={MealDatailScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
