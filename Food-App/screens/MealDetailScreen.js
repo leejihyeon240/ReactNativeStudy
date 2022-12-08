@@ -4,6 +4,7 @@ import MealDetails from "../components/MealDetails";
 import Subtitle from "../components/MealDetail/Subtitle";
 import { MEALS } from '../data/dummy-data'
 import List from "../components/MealDetail/List";
+import IconButton from '../components/IconButton';
 
 function MealDatailScreen({ route, navigation }) {
     const mealId = route.params.mealId; // params = 화면에 전달했을 법한 매개변수를 포함한 객체 / mealId 아이디 전달 받기
@@ -17,7 +18,7 @@ function MealDatailScreen({ route, navigation }) {
     useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => {
-                return <Button title='Tap me!' onPress={headerButtonPressHandler} />
+                return <IconButton icon="star" color="white" onPress={headerButtonPressHandler}/>
             }
         });
     }, [navigation, headerButtonPressHandler]);
