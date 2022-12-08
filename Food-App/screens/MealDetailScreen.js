@@ -1,13 +1,26 @@
-import { Text, View, Image, StyleSheet, ScrollView } from "react-native";
+import { useLayoutEffect } from 'react';
+import { Text, View, Image, StyleSheet, ScrollView, Button } from "react-native";
 import MealDetails from "../components/MealDetails";
 import Subtitle from "../components/MealDetail/Subtitle";
 import { MEALS } from '../data/dummy-data'
 import List from "../components/MealDetail/List";
 
-function MealDatailScreen({ route }) {
+function MealDatailScreen({ route, navigation }) {
     const mealId = route.params.mealId; // params = 화면에 전달했을 법한 매개변수를 포함한 객체 / mealId 아이디 전달 받기
 
     const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+
+    function headerButtonPressHandler() {
+        console.log("Pressed!");
+    }
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight: () => {
+                return <Button title='Tap me!' onPress={headerButtonPressHandler} />
+            }
+        });
+    }, [navigation, headerButtonPressHandler]);
 
     return (
         <ScrollView style={styles.rootContainer}>

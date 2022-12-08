@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -24,7 +24,11 @@ export default function App() {
           <Stack.Screen name="MealsCategories" component={CategorysScreen} options={{ title: 'All Categories' } // ***name 말고 다른 걸로 타이틀 하고 싶을 때
           } />
           <Stack.Screen name='MealsOverview' component={MealsOverviewScreen} />
-          <Stack.Screen name='MealDetail' component={MealDatailScreen} />
+          <Stack.Screen name='MealDetail' component={MealDatailScreen}
+          /* options={{
+            headerRight: () => {
+              return <Button title='Tap me!'>In the header</Button>
+            }}} */ />
         </Stack.Navigator>
       </NavigationContainer>
     </>
