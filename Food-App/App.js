@@ -1,14 +1,37 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Button } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import CategorysScreen from './screens/CategoriesScreen';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import MealDatailScreen from './screens/MealDetailScreen';
+import FavoriteScreen from './screens/FavoriteScreen';
 
 const Stack = createNativeStackNavigator();
+
+const Drawer = createDrawerNavigator();
+
+// 네비게이터 중첩하기 (즐겨찾기)
+function DrawerNavigator() {
+  return (
+    <Drawer.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#F2A6B6' },
+        headerTintColor: 'white',
+        contentStyle: { backgroundColor: '#F2BEB6' }, // 모든 네비게이션바의 제목과 배경색
+
+      }}>
+      <Drawer.Screen name='Categories' component={CategorysScreen}
+        options={{
+          title: 'All Categories',  // 상단 제목
+        }} />
+      <Drawer.Screen name='Favorites' component={FavoriteScreen} />
+    </Drawer.Navigator>
+  )
+}
 
 export default function App() {
   return (
@@ -22,10 +45,19 @@ export default function App() {
             contentStyle: { backgroundColor: '#F2BEB6' }, // 모든 네비게이션바의 제목과 배경색
 
           }}>
-          <Stack.Screen name="MealsCategories" component={CategorysScreen} options={{ title: 'All Categories' } // ***name 말고 다른 걸로 타이틀 하고 싶을 때
-          } />
+          <Stack.Screen
+            name="MealsCategories"
+            component={DrawerNavigator}
+            options={{
+              title: 'All Categories',
+              headerShown: false // 헤더 숨기기
+            }} // ***name 말고 다른 걸로 타이틀 하고 싶을 때 
+          />
           <Stack.Screen name='MealsOverview' component={MealsOverviewScreen} />
           <Stack.Screen name='MealDetail' component={MealDatailScreen}
+            options={{
+              title: 'About the Meeal',  // 상단 제목
+            }}
           /* options={{
             headerRight: () => {
               return <Button title='Tap me!'>In the header</Button>
