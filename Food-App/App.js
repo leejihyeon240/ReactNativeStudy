@@ -51,7 +51,7 @@ export default function App() {
   return (
     <>
       <StatusBar style='light' />
-      <NavigationContainer>
+      <NavigationContainer >
         <Stack.Navigator
           screenOptions={{
             headerStyle: { backgroundColor: '#F2A6B6' },
