@@ -10,6 +10,8 @@ import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import MealDatailScreen from './screens/MealDetailScreen';
 import FavoriteScreen from './screens/FavoriteScreen';
 
+import { Ionicons } from '@expo/vector-icons';
+
 const Stack = createNativeStackNavigator();
 
 const Drawer = createDrawerNavigator();
@@ -21,14 +23,26 @@ function DrawerNavigator() {
       screenOptions={{
         headerStyle: { backgroundColor: '#F2A6B6' },
         headerTintColor: 'white',
-        contentStyle: { backgroundColor: '#F2BEB6' }, // 모든 네비게이션바의 제목과 배경색
+        screenContentStyle: { backgroundColor: '#F2BEB6' }, // 모든 네비게이션바의 제목과 배경색
+        drawerContentStyle: { backgroundColor: '#F2A6B6' },
+        drawerInactiveTintColor: 'white',
+        drawerActiveTintColor: '#F2BEB6',
+        drawerActiveBackgroundColor: 'white'
 
       }}>
       <Drawer.Screen name='Categories' component={CategorysScreen}
         options={{
           title: 'All Categories',  // 상단 제목
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name='list' color={color} size={size} />
+          )
         }} />
-      <Drawer.Screen name='Favorites' component={FavoriteScreen} />
+      <Drawer.Screen name='Favorites' component={FavoriteScreen}
+        options={{
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name='star' color={color} size={size} />
+          )
+        }} />
     </Drawer.Navigator>
   )
 }
