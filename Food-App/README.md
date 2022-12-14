@@ -5,10 +5,10 @@
 
 <br>
 
-<hr>
+<br>
 <img src="https://user-images.githubusercontent.com/59243729/207596452-32dd244b-6316-4b86-87e5-4225ef526be1.gif" width="300" height="648" align="left"/>
 <img src="https://user-images.githubusercontent.com/59243729/207597234-f111535e-cb56-47b8-9ca1-62d33792dfe8.gif" width="300" height="648" align="right"/>
-</hr>
+</br>
 
 <br>
 
