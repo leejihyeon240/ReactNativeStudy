@@ -15,7 +15,7 @@ function FavoritesContextProvider({ children }) { // 즐겨찾기 음식의 id�
     }
 
     function removeFavorite(id) {
-        setFavoriteMealIds((currentFavIds) => currentFavIds.filter((mealId !== id))); // filter를 통해 매개변수로 수신된 id를 걸러냄, 그렇게 하면 새로운 상태가 걸러진 이전의 상태가 된다
+        setFavoriteMealIds((currentFavIds) => currentFavIds.filter((mealId) => mealId !== id)); // filter를 통해 매개변수로 수신된 id를 걸러냄, 그렇게 하면 새로운 상태가 걸러진 이전의 상태가 된다
     }
 
     const value = { // 위의 값 전달
