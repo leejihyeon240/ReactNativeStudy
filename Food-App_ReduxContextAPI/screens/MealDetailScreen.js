@@ -1,30 +1,39 @@
 import { useContext, useLayoutEffect } from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux'; // 훅, Redux 저장소에서 데이터를 가져오는 데 사용
 
 import IconButton from '../components/IconButton';
 import List from '../components/MealDetail/List';
 import Subtitle from '../components/MealDetail/Subtitle';
 import MealDetails from '../components/MealDetails';
 import { MEALS } from '../data/dummy-data';
-import { FavoritesContext } from '../store/context/favorites-context';
+import { addFavorite, removeFavorite } from '../store/redux/favorites';
+
+// import { FavoritesContext } from '../store/context/favorites-context';
 
 function MealDetailScreen({ route, navigation }) {
-  const favoriteMealsCtx = useContext(FavoritesContext); // FavoritesContext를 useContext로 전달
+  // const favoriteMealsCtx = useContext(FavoritesContext); // FavoritesContext를 useContext로 전달
+
+  const favoriteMealIds = useSelector((state) => state.favoriteMeals.ids);
+  const dispatch = useDispatch();
 
   const mealId = route.params.mealId;
-
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
-  // 음식의 즐겨찾기 여부 확인
-  const mealIsFavorite = favoriteMealsCtx.ids.includes(mealId); // ids에 엑세스해서 ids 배열에 mealId가 있는지 알아내야함
-  // includes 메서드는 원시 값을 활용해서 mealId가 ids 배열의 일부라면 true를 반환하고 아니라면 false를 반환
+  // // 음식의 즐겨찾기 여부 확인
+  // const mealIsFavorite = favoriteMealsCtx.ids.includes(mealId); // ids에 엑세스해서 ids 배열에 mealId가 있는지 알아내야함
+  // // includes 메서드는 원시 값을 활용해서 mealId가 ids 배열의 일부라면 true를 반환하고 아니라면 false를 반환
+
+  const mealIsFavorite = favoriteMealIds.includes(mealId);
 
   // 즐겨찾기 별 아이콘 모양 바뀌는 거
   function changeFavoriteStatusHandler() {
     if (mealIsFavorite) {
-      favoriteMealsCtx.removeFavorite(mealId);
+      // favoriteMealsCtx.removeFavorite(mealId);
+      dispatch(removeFavorite({ id: mealId }));
     } else {
-      favoriteMealsCtx.addFavorite(mealId);
+      // favoriteMealsCtx.addFavorite(mealId);
+      dispatch(addFavorite({ id: mealId }));
     }
   }
 
