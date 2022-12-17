@@ -6,3 +6,5 @@ Udemy Course
 - Mini-Game-App
 
 - Food-App
+
+- Expense-Trace-App
